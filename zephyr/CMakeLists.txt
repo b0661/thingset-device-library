@@ -30,4 +30,21 @@ if(DEFINED CONFIG_MINIMAL_LIBC)
     target_sources(ts PRIVATE ${THINGSET_BASE}/zephyr/libc/minimal/extensions.c)
 endif()
 
-endif()
+
+if(DEFINED CONFIG_THINGSET_RBBQ)
+
+# The ThingSet RBBQ library
+# -------------------------
+
+zephyr_library_named("rbbq")
+
+target_sources(rbbq PRIVATE ${THINGSET_BASE}/src/rbbq/rbbq.c)
+
+if(DEFINED CONFIG_THINGSET_RBBQ_LOCAL)
+target_sources(rbbq PRIVATE ${THINGSET_BASE}/src/rbbq/rbbq_local.c)
+target_sources(rbbq PRIVATE ${THINGSET_BASE}/zephyr/rbbq/rbbq_local.c)
+endif(DEFINED CONFIG_THINGSET_RBBQ_LOCAL)
+
+endif(DEFINED CONFIG_THINGSET_RBBQ)
+
+endif(ZEPHYR_BASE AND DEFINED CONFIG_THINGSET)

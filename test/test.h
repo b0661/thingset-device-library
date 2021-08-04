@@ -187,6 +187,10 @@ void test_bin_import(void);
 #include "../src/ts_buf.h"
 #include "../src/ts_port.h"
 void test_buf(void);
+
+#if CONFIG_THINGSET_RBBQ
+#include "../src/rbbq/rbbq_priv.h"
+void test_rbbq_local(void);
 #endif
 
 #ifdef __cplusplus

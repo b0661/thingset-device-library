@@ -28,6 +28,8 @@ extern "C" {
         zassert_is_null(pointer, "exp: NULL: actual: %d", (int)(pointer))
 #define TEST_ASSERT_NOT_NULL(pointer) \
         zassert_not_null(pointer, "exp: !NULL: actual: %d", (int)(pointer))
+#define TEST_ASSERT_NOT_NULL_MESSAGE(pointer, msg) \
+        zassert_not_null(pointer, "exp: !NULL: actual: %d\n%s", (int)(pointer), msg)
 #define TEST_ASSERT_EQUAL(expected, actual) \
         zassert_equal((int)(expected), (int)(actual), "exp: %d: actual: %d", (int)(expected), (int)(actual))
 #define TEST_ASSERT_EQUAL_MESSAGE(expected, actual, msg) \

@@ -103,6 +103,8 @@ void test_main(void)
         /* ThingSet communication support */
         ztest_unit_test_setup_teardown(test_buf, setup, teardown)
 
+        /* RBBQ */
+        ztest_unit_test_setup_teardown(test_rbbq_local, setup, teardown)
     );
 
     ztest_run_test_suite(thingset_tests);

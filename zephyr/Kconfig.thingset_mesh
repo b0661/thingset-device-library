@@ -1,0 +1,34 @@
+# Copyright (c) 2021 Bobby Noelte
+# SPDX-License-Identifier: Apache-2.0
+
+config THINGSET_MESH
+        bool "ThingSet Mesh"
+        help
+          This option enables the ThingSet Mesh networking support.
+
+if THINGSET_MESH
+
+config THINGSET_TRANSPORT_ROUTE_PREFIX_LEN
+        int "Maximum length of a device path for routing."
+        default 16
+        help
+          Maximum length of a device path to be inserted into the transport
+          routing table.
+
+config THINGSET_DEVICE_COUNT
+        int "Number of routing entries in the device table."
+        default 16
+        help
+          Number of devices that routing information is cached for in the
+          device table. Devices may be either neighbours or originators of
+          messages.
+
+config THINGSET_TRANSLATION_COUNT
+        int "Number of translation entries in the translation table."
+        default 16
+        help
+          Number of translation entries in the translation table. Translates
+          between device specific IDs used in binary messages and the text
+          representation.
+
+endif

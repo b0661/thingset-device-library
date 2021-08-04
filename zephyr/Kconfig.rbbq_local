@@ -1,0 +1,40 @@
+# Copyright (c) 2020, Bobby Noelte
+# SPDX-License-Identifier: Apache-2.0
+
+# Kconfig - rbbq_local C library options
+
+config THINGSET_RBBQ_LOCAL
+	bool "ThingSet RBBQ - via LOCAL connection"
+	default n
+
+if THINGSET_RBBQ_LOCAL
+
+config THINGSET_RBBQ_LOCAL0
+	bool "RBBQ buffer for LOCAL device 0"
+	default n
+
+if THINGSET_RBBQ_LOCAL0
+
+config THINGSET_RBBQ_LOCAL0_TRANSFER_BUFFER_SIZE
+	int "Size of the circular buffers for RX and TX"
+	default 512
+	help
+	  Size of circular buffers. Must be aligned to 2.
+
+endif # THINGSET_RBBQ_LOCAL0
+
+config THINGSET_RBBQ_LOCAL1
+	bool "RBBQ buffer for LOCAL device 1"
+	default n
+
+if THINGSET_RBBQ_LOCAL1
+
+config THINGSET_RBBQ_LOCAL1_TRANSFER_BUFFER_SIZE
+	int "Size of the circular buffers for RX and TX"
+	default 512
+	help
+	  Size of circular buffers. Must be aligned to 2.
+
+endif # THINGSET_RBBQ_LOCAL1
+
+endif # THINGSET_RBBQ_LOCAL
