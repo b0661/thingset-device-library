@@ -11,11 +11,23 @@
 #include "../../../test/test.h"
 
 
-void setup(void) {
-    (void)ts_init(&ts, &data_objects[0], data_objects_size);
+void setup(void)
+{
+    test_ts_init();
 }
 
-void teardown(void) {
+void teardown(void)
+{
+}
+
+void setup_mesh(void)
+{
+    test_ts_init();
+    test_mesh_init();
+}
+
+void teardown_mesh(void)
+{
 }
 
 void test_main(void)
@@ -101,7 +113,15 @@ void test_main(void)
         ztest_unit_test_setup_teardown(test_bin_import, setup, teardown),
 
         /* ThingSet communication support */
-        ztest_unit_test_setup_teardown(test_buf, setup, teardown)
+        ztest_unit_test_setup_teardown(test_buf, setup, teardown),
+
+        /* MESH */
+        ztest_unit_test_setup_teardown(test_mesh_init, setup, teardown),
+        ztest_unit_test_setup_teardown(test_mesh_node_table, setup_mesh, teardown_mesh),
+        ztest_unit_test_setup_teardown(test_mesh_neighbour_table, setup_mesh, teardown_mesh),
+        ztest_unit_test_setup_teardown(test_mesh_originator_table, setup_mesh, teardown_mesh),
+        ztest_unit_test_setup_teardown(test_mesh_protect_window, setup_mesh, teardown_mesh),
+        ztest_unit_test_setup_teardown(test_mesh_helpers, setup_mesh, teardown_mesh),
 
         /* RBBQ */
         ztest_unit_test_setup_teardown(test_rbbq_local, setup, teardown)

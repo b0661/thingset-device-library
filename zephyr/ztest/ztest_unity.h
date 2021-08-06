@@ -62,24 +62,32 @@ extern "C" {
         zassert_equal((uint16_t)(expected), (uint16_t)(actual), "exp: %u: actual: %u", (unsigned)(uint16_t)(expected), (unsigned)(uint16_t)(actual))
 #define TEST_ASSERT_EQUAL_UINT32(expected, actual) \
         zassert_equal((uint32_t)(expected), (uint32_t)(actual), "exp: %u: actual: %u", (unsigned)(uint32_t)(expected), (unsigned)(uint32_t)(actual))
+#define TEST_ASSERT_EQUAL_UINT64(expected, actual) \
+        zassert_equal((uint64_t)(expected), (uint64_t)(actual), "exp: %" PRIu64 ": actual: %" PRIu64, (uint64_t)(expected), (uint64_t)(actual))
 #define TEST_ASSERT_EQUAL_PTR(expected, actual) \
         zassert_equal_ptr(expected, actual, "exp: %d: actual: %d", (int)(expected), (int)(actual))
 #define TEST_ASSERT_EQUAL_STRING(expected, actual) \
         zassert_equal(strcmp(expected, actual), 0, "exp: %s: actual: %s", expected, actual)
 #define TEST_ASSERT_EQUAL_STRING_MESSAGE(expected, actual, msg) \
         zassert_equal(strcmp(expected, actual), 0, "exp: %s: actual: %s\n%s", expected, actual, msg)
+#define TEST_ASSERT_GREATER_OR_EQUAL_UINT32(threshold, actual) \
+        zassert_true((uint32_t)(threshold) <= (uint32_t)(actual), "exp: >= %u: actual: %u", (unsigned)(uint32_t)(threshold), (unsigned)(uint32_t)(actual))
 #define TEST_ASSERT_GREATER_OR_EQUAL_size_t(threshold, actual) \
         zassert_true((size_t)(threshold) <= (size_t)(actual), "exp: >= %d: actual: %d", (int)(threshold), (int)(actual))
+#define TEST_ASSERT_LESS_THAN_UINT16(threshold, actual) \
+        zassert_true((uint16_t)(threshold) > (uint16_t)(actual), "exp: < %u: actual: %u", (unsigned)(uint16_t)(threshold), (unsigned)(uint16_t)(actual))
 #define TEST_ASSERT_LESS_THAN_size_t(threshold, actual) \
         zassert_true((size_t)(threshold) > (size_t)(actual), "exp: < %d: actual: %d", (int)(threshold), (int)(actual))
 #define TEST_ASSERT_LESS_THAN_size_t_MESSAGE(threshold, actual, msg) \
         zassert_true((size_t)(threshold) > (size_t)(actual), "exp: < %d: actual: %d\n%s", (int)(threshold), (int)(actual), msg)
+#define TEST_ASSERT_LESS_OR_EQUAL_UINT8(threshold, actual) \
+        zassert_true((uint8_t)(threshold) >= (uint8_t)(actual), "exp: <= %u: actual: %u", (unsigned)(uint8_t)(threshold), (unsigned)(uint8_t)(actual))
 #define TEST_ASSERT_LESS_OR_EQUAL_size_t(threshold, actual) \
         zassert_true((size_t)(threshold) >= (size_t)(actual), "exp: <= %d: actual: %d", (int)(threshold), (int)(actual))
 #define TEST_ASSERT_LESS_OR_EQUAL_size_t_MESSAGE(threshold, actual, msg) \
         zassert_true((size_t)(threshold) >= (size_t)(actual), "exp: <= %d: actual: %d\n%s", (int)(threshold), (int)(actual), msg)
 #define TEST_ASSERT_NOT_EQUAL(expected, actual) \
-        zassert_not_equal(expected, actual, "exp: %d: actual: %d", (int)(expected), (int)(actual))
+        zassert_not_equal(expected, actual, "exp: ! %d: actual: %d", (int)(expected), (int)(actual))
 
 #ifdef __cplusplus
 } /* extern "C" */

@@ -3,32 +3,65 @@
 
 config THINGSET_MESH
         bool "ThingSet Mesh"
+        select THINGSET_COM
+        select NET_BUF
         help
           This option enables the ThingSet Mesh networking support.
 
 if THINGSET_MESH
 
-config THINGSET_TRANSPORT_ROUTE_PREFIX_LEN
-        int "Maximum length of a device path for routing."
+config THINGSET_MESH_BUF_COUNT
+        int "Number of network buffers in th ThingSet Mesh buffer pool."
         default 16
         help
-          Maximum length of a device path to be inserted into the transport
-          routing table.
+          Number of network buffers in ThingSet Mesh buffer pool.
 
-config THINGSET_DEVICE_COUNT
-        int "Number of routing entries in the device table."
+config THINGSET_MESH_BUF_DATA_SIZE
+        int "Data block size for ThingSet Mesh network messages."
+        default 1024
+        help
+          Data block size for all ThingSet Mesh network messages. Messages are
+          allocated from this block.
+
+config THINGSET_MESH_NODE_COUNT
+        int "Number of node entries in the node table."
         default 16
         help
-          Number of devices that routing information is cached for in the
-          device table. Devices may be either neighbours or originators of
+          Number of nodes that routing information is cached for in the
+          node table. Nodes may be either neighbours or originators of
           messages.
 
-config THINGSET_TRANSLATION_COUNT
+config THINGSET_MESH_NODE_PATHS_MAX
+        int "Maximum number of routing entries per node in the node table."
+        default 2
+        help
+          Maximum number of routing entries per node in the node table.
+
+config THINGSET_MESH_TRANSLATION_COUNT
         int "Number of translation entries in the translation table."
         default 16
         help
           Number of translation entries in the translation table. Translates
           between device specific IDs used in binary messages and the text
           representation.
+
+config THINGSET_MESH_NODE_SEQNO_EXPECTED_RANGE
+        int "Expected node sequence number range for valid messages."
+        default 10
+        help
+           A valid message has to have a node sequence number that is greater than the last valid
+           node sequence number reduced by TSM_NODE_SEQNO_EXPECTED_RANGE and is less than the last
+           valid node sequence number advanced by TSM_NODE_SEQNO_EXPECTED_RANGE taking into account
+           roll over.
+
+config CONFIG_THINGSET_MESH_NODE_SEQNO_CACHE_SIZE
+        int "Size of cache for node sequence numbers for protection window."
+        default 8
+        help
+           Size of cache for node sequence numbers for protection window.
+
+module = THINGSET_MESH
+module-str = thingset_mesh
+source "subsys/logging/Kconfig.template.log_config"
 
 endif

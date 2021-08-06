@@ -63,6 +63,7 @@ module-str = thingset
 source "subsys/logging/Kconfig.template.log_config"
 
 rsource "Kconfig.thingset_com"
+rsource "Kconfig.thingset_mesh"
 rsource "Kconfig.rbbq"
 
 endif

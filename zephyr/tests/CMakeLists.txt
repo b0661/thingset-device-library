@@ -38,4 +38,5 @@ target_sources(app PRIVATE src/main.c
                            ${THINGSET_BASE}/test/test_context.c
                            ${THINGSET_BASE}/test/test_data.c
                            ${THINGSET_BASE}/test/test_com.c
+                           ${THINGSET_BASE}/test/test_mesh.c
                            ${THINGSET_BASE}/test/test_rbbq.c)

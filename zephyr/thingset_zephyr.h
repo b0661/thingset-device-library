@@ -70,6 +70,14 @@ inline unsigned long long strtoull(const char *str, char **endptr, int base)
 #endif
 
 /* --------------------
+ * CONFIG_THINGSET_MESH
+ * --------------------
+ */
+#if CONFIG_THINGSET_MESH
+#include <net/buf.h>
+#endif /* CONFIG_THINGSET_MESH */
+
+/* --------------------
  * CONFIG_THINGSET_RBBQ
  * --------------------
  */

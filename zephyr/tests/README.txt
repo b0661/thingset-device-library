@@ -7,7 +7,7 @@ The tests are run on the "native-std" board using the host environment for build
 Run the tests using west to build:
 
     cd <root of thingset-device-library>
-    west build zephyr/tests
+    west build --board=native_posix zephyr/tests
     cd build
     ./zephyr/zephyr.elf
 

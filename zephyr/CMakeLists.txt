@@ -30,6 +30,18 @@ if(DEFINED CONFIG_MINIMAL_LIBC)
     target_sources(ts PRIVATE ${THINGSET_BASE}/zephyr/libc/minimal/extensions.c)
 endif()
 
+if(DEFINED CONFIG_THINGSET_MESH)
+
+# The ThingSet Mesh library
+# -------------------------
+
+zephyr_library_named("tsm")
+
+target_sources(tsm PRIVATE ${THINGSET_BASE}/src/mesh/thingset_mesh.c)
+target_sources(tsm PRIVATE ${THINGSET_BASE}/zephyr/thingset/mesh/mesh.c)
+
+endif(DEFINED CONFIG_THINGSET_MESH)
+
 
 if(DEFINED CONFIG_THINGSET_RBBQ)
 

@@ -187,10 +187,21 @@ void test_bin_import(void);
 #include "../src/ts_buf.h"
 #include "../src/ts_port.h"
 void test_buf(void);
+#endif
 
 #if CONFIG_THINGSET_RBBQ
 #include "../src/rbbq/rbbq_priv.h"
 void test_rbbq_local(void);
+#endif
+
+#if CONFIG_THINGSET_MESH
+#include "../src/mesh/thingset_mesh_priv.h"
+void test_mesh_init(void);
+void test_mesh_node_table(void);
+void test_mesh_neighbour_table(void);
+void test_mesh_originator_table(void);
+void test_mesh_protect_window(void);
+void test_mesh_helpers(void);
 #endif
 
 #ifdef __cplusplus
