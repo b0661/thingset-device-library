@@ -6,11 +6,10 @@
  */
 
 /* The main implementation file of the thingset library. */
-#define THINGSET_MAIN 1
+#define LOG_MAIN 1
+#include "ts_env.h"
 
-#include "thingset_priv.h"
-
-#include <stdio.h>
+#include "ts_context.h"
 
 
 static void _check_id_duplicates(const struct ts_data_object *data, size_t num)

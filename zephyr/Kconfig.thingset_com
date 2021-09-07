@@ -1,0 +1,29 @@
+# Copyright (c) 2021 Bobby Noelte
+# SPDX-License-Identifier: Apache-2.0
+
+config THINGSET_COM
+        bool "ThingSet Communication Support"
+        select NET_BUF
+        help
+          This option enables the ThingSet communication support.
+
+if THINGSET_COM
+
+config THINGSET_COM_BUF_COUNT
+        int "Number of communication buffers in the ThingSet buffer pool."
+        default 16
+        help
+          Number of communication buffers in ThingSet device's buffer pool.
+
+config THINGSET_COM_BUF_DATA_SIZE
+        int "Data block size for ThingSet communication buffers."
+        default 1024
+        help
+          Data block size for all ThingSet communication buffers. Buffers are allocated from this
+          block.
+
+module = THINGSET_COM
+module-str = thingset_com
+source "subsys/logging/Kconfig.template.log_config"
+
+endif

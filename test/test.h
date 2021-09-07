@@ -7,7 +7,8 @@
 #ifndef THINGSET_TEST_H
 #define THINGSET_TEST_H
 
-#include "../src/thingset_priv.h"
+#include "../src/ts_env.h"
+#include "../src/ts_context.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -180,6 +181,13 @@ void test_bin_deserialize_bytes(void);
 void test_bin_patch_fetch_bytes(void);
 void test_bin_export(void);
 void test_bin_import(void);
+
+#if CONFIG_THINGSET_COM
+#include "../src/ts_time.h"
+#include "../src/ts_buf.h"
+#include "../src/ts_port.h"
+void test_buf(void);
+#endif
 
 #ifdef __cplusplus
 } /* extern "C" */

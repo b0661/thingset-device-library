@@ -1,13 +1,10 @@
 /*
  * Copyright (c) 2017 Martin Jäger / Libre Solar
  * Copyright (c) 2021 Bobby Noelte.
- *
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include "thingset_priv.h"
-
-#include "jsmn.h"
+#include "ts_env.h"
 
 #include <math.h>
 #include <string.h>
@@ -15,6 +12,10 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <inttypes.h>
+
+#include "jsmn.h"
+#include "ts_context.h"
+
 
 int ts_txt_response(struct ts_context *ts, int code)
 {

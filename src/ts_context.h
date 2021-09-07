@@ -5,35 +5,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#ifndef THINGSET_PRIV_H_
-#define THINGSET_PRIV_H_
+#ifndef TS_CONTEXT_H_
+#define TS_CONTEXT_H_
 
 #include "thingset.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-/* ThingSet adaptations to environment */
-#if CONFIG_THINGSET_ZEPHYR
-
-#include "../zephyr/thingset_zephyr.h"
-
-#else /* ! CONFIG_THINGSET_ZEPHYR */
-
-#define DEBUG 0
-
-#define LOG_DBG(...) printf(__VA_ARGS__)
-#define LOG_ERR(...) printf(__VA_ARGS__)
-#define LOG_ALLOC_STR(str) str
-
-#include <stdio.h>
-
-#ifdef UNIT_TEST
-#include <unity.h>
-#endif
-
-#endif /* CONFIG_THINGSET_ZEPHYR */
 
 /**
  * Internal return type flags for payload data
@@ -206,4 +185,4 @@ int ts_json_deserialize_value(struct ts_context *ts, char *buf, size_t len, jsmn
 } /* extern "C" */
 #endif
 
-#endif /* THINGSET_PRIV_H_ */
+#endif /* TS_CONTEXT_H_ */

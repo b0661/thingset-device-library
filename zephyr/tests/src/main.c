@@ -98,7 +98,11 @@ void test_main(void)
 #endif
         /* Bin mode: exporting/importing of data */
         ztest_unit_test_setup_teardown(test_bin_export, setup, teardown),
-        ztest_unit_test_setup_teardown(test_bin_import, setup, teardown)
+        ztest_unit_test_setup_teardown(test_bin_import, setup, teardown),
+
+        /* ThingSet communication support */
+        ztest_unit_test_setup_teardown(test_buf, setup, teardown)
+
     );
 
     ztest_run_test_suite(thingset_tests);

@@ -5,14 +5,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include "thingset_priv.h"
-
-#include "cbor.h"
-
+#include <math.h>       // for rounding of floats
 #include <string.h>
 #include <stdio.h>
 #include <sys/types.h>  // for definition of endianness
-#include <math.h>       // for rounding of floats
+
+#include "cbor.h"
+
+#include "ts_context.h"
+
 
 static int cbor_deserialize_array_type(const uint8_t *buf, const struct ts_data_object *data_obj);
 

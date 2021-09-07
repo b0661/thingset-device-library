@@ -21,6 +21,11 @@ zephyr_include_directories(${THINGSET_BASE}/src)
 
 add_subdirectory(${THINGSET_BASE}/src build/thingset)
 
+if(DEFINED CONFIG_THINGSET_COM)
+target_sources(ts PRIVATE ${THINGSET_BASE}/zephyr/thingset/ts_time.c)
+target_sources(ts PRIVATE ${THINGSET_BASE}/zephyr/thingset/ts_buf.c)
+endif()
+
 if(DEFINED CONFIG_MINIMAL_LIBC)
     target_sources(ts PRIVATE ${THINGSET_BASE}/zephyr/libc/minimal/extensions.c)
 endif()

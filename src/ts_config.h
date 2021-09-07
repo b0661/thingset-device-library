@@ -75,4 +75,25 @@
 #define TS_BYTE_STRING_TYPE_SUPPORT CONFIG_THINGSET_BYTE_STRING_TYPE_SUPPORT
 #endif
 
+/**
+ * @def TS_BUF_COUNT
+ * @brief Number of buffers in the ThingSet communication buffer pool.
+ */
+#if !defined(TS_BUF_COUNT) && !defined(CONFIG_THINGSET_COM_BUF_COUNT)
+#define TS_BUF_COUNT 16
+#elif !defined(TS_BUF_COUNT)
+#define TS_BUF_COUNT CONFIG_THINGSET_COM_BUF_COUNT
+#endif
+
+/**
+ * @def TS_BUF_DATA_SIZE
+ * @brief Data block size for ThingSet communication buffers.
+ */
+#if !defined(TS_BUF_DATA_SIZE) \
+    && !defined(CONFIG_THINGSET_COM_BUF_DATA_SIZE)
+#define TS_BUF_DATA_SIZE 1024
+#elif !defined(TS_BUF_DATA_SIZE)
+#define TS_BUF_DATA_SIZE CONFIG_THINGSET_COM_BUF_DATA_SIZE
+#endif
+
 #endif /* TS_CONFIG_H_ */
